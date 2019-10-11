@@ -2,7 +2,7 @@ node ('maven') {
 stage (1st stage') {
 // use the id of the gloally configured maven instance
 // execute maven
-sh "{mvnTool}/bin/mvn clean install"
+//sh "{mvnTool}/bin/mvn clean install"
 sh "echo hello world"
 }
 stage ('2nd stage') {
