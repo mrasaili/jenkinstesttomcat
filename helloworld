@@ -6,6 +6,6 @@ stage ('2nd stage') {
 sh "touch mkn.txt"
 }
 stage ('3rd stage') {
-sh "touch helloworld.py"
+sh "echo helloworld.py"
 }
 }
