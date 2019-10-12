@@ -9,7 +9,7 @@ sh "echo hello world"
 }
 stage ('maven package') {
 
-sh "$mvntool/bin/mvn clean package -DskipTests=true"
+sh "$mvnTool/bin/mvn clean package -DskipTests=true"
 }
 stage ('3rd stage') {
 sh "echo helloworld.py"
