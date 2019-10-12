@@ -8,7 +8,7 @@ junit allowEmptyResults: true, testResults: 'target/surefire-reports/*.xml'
 sh "echo hello world"
 }
 stage ('artifacts') {
-archiveArtifacts '**/target/*.war'
+archiveArtifacts '**/target/*.jar'
 
 }
 stage ('3rd stage') {
