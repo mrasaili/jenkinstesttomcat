@@ -9,7 +9,6 @@ sh "echo hello world"
 }
 stage ('artifacts') {
 archiveArtifacts '**/target/*.war'
-
 }
 stage ('3rd stage') {
 sh "echo helloworld.py"
