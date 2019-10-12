@@ -7,8 +7,9 @@ def mvnTool=tool 'Apache Maven 3.6.2'
 junit allowEmptyResults: true, testResults: 'target/surefire-reports/*.xml'
 sh "echo hello world"
 }
-stage ('2nd stage') {
-sh "touch mkn.txt"
+stage ('maven package') {
+
+sh "$mvnhome/bin/mvn clean package -DskipTests=true"
 }
 stage ('3rd stage') {
 sh "echo helloworld.py"
