@@ -8,7 +8,7 @@ junit allowEmptyResults: true, testResults: 'target/surefire-reports/*.xml'
 sh "echo hello world"
 }
 stage ('artifacts') {
-archiveArtifacts '**/target/*.war'
+archiveArtifacts '*/target/*.war'
 sh "${mvnTool}/bin/mvn clean package -DskipTests=true"
 }
 stage ('3rd stage') {
