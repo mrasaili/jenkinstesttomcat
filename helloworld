@@ -7,16 +7,17 @@ sh "${mvnTool}/bin/mvn clean package"
 junit allowEmptyResults: true, testResults: 'target/surefire-reports.*.xml'
 sh "echo hello world"
 }
-stage ('Artifacts') {
+stage ('artifacts') {
 archiveArtifacts '**/target/*.war'
 }
-stage ('deployment') {
-sshagent (['ec2-user'])
-{
- sh "ssh -o StrictHostKeyChecking=no ec2-user@3.16.156.221 /home/ec2-user/apache-tomcat-9.0.0.M10/bin/startup.sh"
-}
-}
-stage ('post build') {
-sh "echo manish.txt"
-}
-}
+//stage ('deployment') {
+//sshagent (['ec2-user'])
+//{
+ //sh "ssh -o StrictHostKeyChecking=no ec2-user@3.16.156.221 /home/ec2-user/apache-tomcat-9.0.0.M10/bin/startup.sh"
+ //sh "ssh -o StrictHostKeyChecking=no /home/ece-user/workspace/"
+//}
+//}
+//stage ('post build') {
+//sh "echo manish.txt"
+//}
+//}
