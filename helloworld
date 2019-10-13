@@ -1,16 +1,22 @@
 node ('maven') {
 stage ('maven define') {
 // use the id of the gloally configured maven instance
-// def mvnTool=tool 'Apache Maven 3.6.2'
+def mvnTool=tool 'Apache Maven 3.6.2'
 // execute maven
-sh "{mvnTool}/bin/mvn clean package"
-junit allowEmptyResults: true, testResults: 'target/surefire-reports/*.xml'
+sh "${mvnTool}/bin/mvn clean package"
+junit allowEmptyResults: true, testResults: 'target/surefire-reports.*.xml'
 sh "echo hello world"
 }
-stage ('artifacts') {
+stage ('Artifacts') {
 archiveArtifacts '**/target/*.war'
 }
-stage ('3rd stage') {
-sh "echo helloworld.py"
+stage ('deployment') {
+sshagent (['ec2-user'])
+{
+ sh "ssh -o StrictHostKeyChecking=no ec2-user@3.16.156.221 /home/ec2-user/apache-tomcat-9.0.0.M10/bin/startup.sh"
+}
+}
+stage ('post build') {
+sh "echo manish.txt"
 }
 }
